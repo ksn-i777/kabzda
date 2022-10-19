@@ -4,24 +4,15 @@ import {AccordionBody} from "./AccordionBody";
 
 type AccordionPropsType = {
     title: string,
-    collapsed: boolean,
+    deployed: boolean,
 }
 
 export function Accordion(props: AccordionPropsType) {
-    if (props.collapsed) {
-        return (
-            <div>
-                <AccordionTitle title={props.title}/>
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <AccordionTitle title={props.title}/>
-                <AccordionBody/>
-            </div>
-        )
-    }
-
+    return (
+        <div>
+            <AccordionTitle title={props.title}/>
+            {props.deployed && <AccordionBody/>}
+        </div>
+    )
 }
 

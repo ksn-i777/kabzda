@@ -1,0 +1,30 @@
+.block {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.on {
+    background-color: aquamarine;
+}
+.off {
+    background-color: crimson;
+}
+.ion {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 100%;
+    vertical-align: middle;
+    background-color: aquamarine;
+    margin-left: 10px;
+}
+.ioff {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 100%;
+    vertical-align: middle;
+    background-color: crimson;
+    margin-left: 10px;
+}
