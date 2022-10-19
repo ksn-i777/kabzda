@@ -1,10 +1,15 @@
 import s from './OnOff.module.css';
+import {OnOffStatusType} from '../../App';
 
-export function Off() {
+type OffPropsType = {
+    changeSwitch: (value: OnOffStatusType) => void,
+}
+
+export function Off(props: OffPropsType) {
     return (
-        <div className={s.block}>
-            <button>On</button>
-            <button className={s.off}>Off</button>
+        <div>
+            <button className={s.button} onClick={() => {props.changeSwitch('on')}}>On</button>
+            <button className={`${s.button} ${s.off}`}>Off</button>
             <span className={s.ioff}></span>
         </div>
     )

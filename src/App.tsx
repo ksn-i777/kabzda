@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import {Title} from "./components/Title/Title";
 import {Rating} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
 import {OnOff} from './components/OnOff/OnOff';
 
+export type OnOffStatusType = 'start' | 'on' | 'off';
+
 function App() {
+
+    let [status, setStatus] = useState<OnOffStatusType>('start')
+
+    function useChangeStatus (value: OnOffStatusType) {
+        setStatus(value)
+    }
 
     return (
         <div className="App">
@@ -19,7 +27,7 @@ function App() {
             <Rating value={3}/>
             <Rating value={4}/>
             <Rating value={5}/>
-            <OnOff switch={true}/>
+            <OnOff switch={status} changeSwitch={useChangeStatus}/>
         </div>
     );
 }
