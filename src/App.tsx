@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import {Title} from "./components/Title";
-import {Rating} from "./components/Rating";
-import {Accordion} from "./components/Accordion";
-import {OnOff} from './components/OnOff';
+import {Title} from "./components/Title/Title";
+import {Rating} from "./components/Rating/Rating";
+import {Accordion} from "./components/Accordion/Accordion";
+import {OnOff} from './components/OnOff/OnOff';
 
 function App() {
 
