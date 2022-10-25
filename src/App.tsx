@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import {Title} from "./components/Title/Title";
-import {Rating} from "./components/Rating/Rating";
 import {Accordion} from "./components/Accordion/Accordion";
+import {Rating} from "./components/Rating/Rating";
 import {OnOff} from './components/OnOff/OnOff';
+import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
+import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating'
 
 export type OnOffStatusType = 'start' | 'on' | 'off';
 
 function App() {
 
-    let [status, setStatus] = useState<OnOffStatusType>('start')
-
-    function useChangeStatus (value: OnOffStatusType) {
-        setStatus(value)
-    }
-
     return (
         <div className="App">
             <Title title={"This APP component"}/>
-            <Title title={"My Friends"}/>
-            <Accordion title={"Menu"} deployed={false}/>
-            <Accordion title={"Users"} deployed={true}/>
-            <Rating value={0}/>
-            <Rating value={1}/>
-            <Rating value={2}/>
+            <Accordion title={"Menu"} deployed={true}/>
             <Rating value={3}/>
-            <Rating value={4}/>
-            <Rating value={5}/>
-            <OnOff switch={status} changeSwitch={useChangeStatus}/>
+            <OnOff/>
+            <OnOff/>
+            <UncontrolledAccordion title={"Menu"}/>
+            <UncontrolledAccordion title={"Users"}/>
+            <UncontrolledRating/>
+            <UncontrolledRating/>
+            <UncontrolledRating/>
         </div>
     );
 }

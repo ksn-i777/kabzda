@@ -1,7 +1,6 @@
 .block {
     margin-top: 20px;
     margin-left: 20px;
-
 }
 .on {
     background-color: aquamarine;
@@ -9,10 +8,8 @@
 .off {
     background-color: crimson;
 }
-.button {
-    margin-right: 15px;
-}
-.istart {
+.span {
+    margin-left: 15px;
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -20,21 +17,9 @@
     border-radius: 100%;
     vertical-align: middle;
 }
-.ion {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border: 1px solid black;
-    border-radius: 100%;
-    vertical-align: middle;
+.spanOn {
     background-color: aquamarine;
 }
-.ioff {
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    border: 1px solid black;
-    border-radius: 100%;
-    vertical-align: middle;
+.spanOff {
     background-color: crimson;
 }
