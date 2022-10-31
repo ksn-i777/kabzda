@@ -1,37 +1,35 @@
 import React, { useState } from 'react';
 import s from './OnOff.module.css';
 import {Button} from './Button';
+import {StatusOnOff} from '../../App';
 
-export function OnOff() {
+type OnOffPropsType = {
+    status: StatusOnOff,
+    changeStatus: (value: StatusOnOff) => void,
+}
 
-    type StatusType = 'on' | 'off' | 'reset';
+export function OnOff(props: OnOffPropsType) {
 
-    let [status, setStatus] = useState<StatusType>('reset')
-
-    function changeStatus (value: StatusType) {
-        setStatus(value)
-    }
-   
     return (
         <div className={s.block}>
             <div>Push on buttons</div>            
             <Button
                 name={'On'}
-                className={status === 'on' ? s.on : ''}
-                callback={() => changeStatus('on')}
+                className={props.status === 'on' ? s.on : ''}
+                callback={() => props.changeStatus('on')}
             />
             <Button
                 name={'Off'}
-                className={status === 'off' ? s.off : ''}
-                callback={() => changeStatus('off')}
+                className={props.status === 'off' ? s.off : ''}
+                callback={() => props.changeStatus('off')}
             />
             <Button
                 name={'Reset'}
                 className={''}
-                callback={() => changeStatus('reset')}
+                callback={() => props.changeStatus('reset')}
             />
             <span
-                className={status === 'on' ? `${s.span} ${s.spanOn} ` : status === 'off' ? `${s.span} ${s.spanOff}` : s.span}>
+                className={props.status === 'on' ? `${s.span} ${s.spanOn} ` : props.status === 'off' ? `${s.span} ${s.spanOff}` : s.span}>
             </span>
         </div>
     )

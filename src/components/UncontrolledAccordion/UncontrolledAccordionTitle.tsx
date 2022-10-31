@@ -7,9 +7,9 @@ type UncontrolledAccordionTitlePropsType = {
 
 export function UncontrolledAccordionTitle(props: UncontrolledAccordionTitlePropsType) {
     return (
-        <div
+        <h3
             style={{display: 'inline-block', cursor: 'pointer', marginTop: '30px', marginLeft: '30px'}}
             onClick={props.changeDeploy}>{props.title}
-        </div>
+        </h3>
     )
 }

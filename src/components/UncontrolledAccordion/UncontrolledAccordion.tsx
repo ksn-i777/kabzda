@@ -11,16 +11,12 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     let [deploy, setDeploy] = useState(true)
     
     function changeDeploy () {
-        if (deploy) {
-            setDeploy(false)
-        } else {
-            setDeploy(true)
-        }
+        setDeploy(!deploy)
     }
 
     return (
         <div>
-            <UncontrolledAccordionTitle title={props.title} changeDeploy={() => changeDeploy()}/>
+            <UncontrolledAccordionTitle title={props.title} changeDeploy={changeDeploy}/>
             {deploy && <UncontrolledAccordionBody/>}
         </div>
     )
