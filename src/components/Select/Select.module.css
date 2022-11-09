@@ -1,0 +1,33 @@
+.wrapper {
+    position: relative;
+    margin-top: 50px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 150px;
+    padding: 10px;
+}
+.wrapper:hover {
+    border-color: blue;
+    background-color: lightsteelblue;
+}
+
+.first {
+    cursor: pointer;
+}
+.name {
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    line-height: 0;
+}
+.ul {
+    list-style-type: none;
+}
+
+.li {
+    list-style-type: none;
+    cursor: pointer;
+}
+.li:hover {
+    color: blue;
+}
