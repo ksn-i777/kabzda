@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, MouseEvent, KeyboardEvent, useEffect} from 'react';
 import {Item} from '../../App';
 import s from './Select.module.css'
 
 type SelectPropsType = {
-    name: string,
     itemValue: number,
     items: Array<Item>,
     changeItem: (itemID: number) => void
@@ -12,20 +11,50 @@ type SelectPropsType = {
 export function Select(props: SelectPropsType) {
 
     const [mode, setMode] = useState(false)
+    const [hoverItem, setHoverItem] = useState(props.itemValue)
 
-    function openMode() {
-        setMode(true)
+    useEffect(() => {
+        setHoverItem(props.itemValue)
+    }, [props.itemValue])
+
+    function onChangeMode() {
+        setMode(!mode)
     }
-    function changeItem(itemID: number) {
+    function onChangeItem(itemID: number) {
         props.changeItem(itemID)
         setMode(!mode)
     }
+    function onChooseItemMouse(itemID: number) {
+        setHoverItem(itemID)
+    }
+    function onChooseItemArrow(e: KeyboardEvent<HTMLDivElement>) {
+        if(e.code === 'ArrowUp' && hoverItem > 1) {
+            props.changeItem(hoverItem-1)
+        }
+        if(e.code === 'ArrowDown' && hoverItem < props.items.length) {
+            props.changeItem(hoverItem+1)
+        }
+        if(e.code === 'Enter') {
+            props.changeItem(hoverItem)
+            setMode(!mode)
+        }
+        if(e.code === 'Escape') {
+            setMode(!mode)
+        }
+    }
 
     return (
-        <div className={s.wrapper}>
-            <span className={s.name}><b>{props.name}</b></span>
-            <div className={s.first} onClick={openMode}>{!mode && props.items.map(i => i.id === props.itemValue ? i.title : '')}</div>
-            <div className={s.ul}>{mode && props.items.map(i => <li key={i.id} className={s.li} onClick={() => changeItem(i.id)}>{i.title}</li>)}</div>
+        <div className={s.wrapper} tabIndex={3} onKeyDown={onChooseItemArrow}>
+            <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>{props.items.map(i => i.id === props.itemValue ? i.title : '')}</div>
+            <div className={s.ul} onClick={onChangeMode}>
+                {mode && props.items.map(i =>
+                <div
+                    key={i.id}
+                    onMouseEnter={() => onChooseItemMouse(i.id)}
+                    className={hoverItem === i.id ? s.liHover : s.li}
+                    onClick={() => onChangeItem(i.id)}>{i.title}
+                </div>)}
+            </div>
         </div>
     )
 }

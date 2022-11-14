@@ -52,7 +52,7 @@ function App() {
             <OnOff status={status} changeStatus={setStatus}/>
             <UncontrolledOnOff/>
 
-            <Select name={'Choose discipline:'} itemValue={itemValue} items={items} changeItem={changeItem}/>
+            <Select itemValue={itemValue} items={items} changeItem={changeItem}/>
         </div>
     );
 }
