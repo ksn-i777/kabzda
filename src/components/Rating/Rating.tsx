@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 import {Star} from './Star';
 import {RatingValueType} from '../../App';
 

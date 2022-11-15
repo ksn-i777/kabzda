@@ -1,5 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
-import {RatingValueType} from '../../App';
+import React from 'react';
 
 type StarPropsType = {
     selected: boolean,
