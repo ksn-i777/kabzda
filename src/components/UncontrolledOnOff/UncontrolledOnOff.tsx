@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import s from './UncontrolledOnOff.module.css';
 import {Button} from './Button';
 
-export function UncontrolledOnOff() {
+function UncontrolledOnOff() {
+    console.log('UNConoff')
 
     type StatusType = 'on' | 'off' | 'reset';
 
@@ -36,3 +37,5 @@ export function UncontrolledOnOff() {
         </div>
     )
 }
+
+export const MemoUncontrolledOnOff = React.memo(UncontrolledOnOff)

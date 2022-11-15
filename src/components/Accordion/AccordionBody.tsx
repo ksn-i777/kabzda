@@ -1,5 +1,5 @@
 import React from "react";
-import {Item} from '../../App';
+import {Item} from './Accordion';
 
 type AccordionBodyPropsType = {
     items: Array<Item>,

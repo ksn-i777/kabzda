@@ -1,58 +1,39 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Accordion} from "./components/Accordion/Accordion";
-import {UncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
-import {Rating} from "./components/Rating/Rating";
-import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating'
-import {OnOff} from './components/OnOff/OnOff';
-import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
-import {Select} from './components/Select/Select';
+import {MemoAccordion} from './components/Accordion/Accordion';
+import {MemoUncontrolledAccordion} from './components/UncontrolledAccordion/UncontrolledAccordion';
+import {MemoRating} from "./components/Rating/Rating";
+import {MemoUncontrolledRating} from './components/UncontrolledRating/UncontrolledRating'
+import {MemoOnOff} from './components/OnOff/OnOff';
+import {MemoUncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
+import {MemoSelect} from './components/Select/Select';
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
 export type StatusOnOff = 'on' | 'off' | 'reset';
-export type Item = {
-    id: number,
-    title: string
-}
-export type Items = Array<Item>
 
 function App() {
+    console.log('app')
 
-    const [deploy, setDeploy] = useState<boolean>(false) //Accordion
+    const [deploy, setDeploy] = useState<boolean>(false) //MemoAccordion
 
-    const [ratingValue, setRatingValue] = useState<RatingValueType>(0) //Rating
+    const [ratingValue, setRatingValue] = useState<RatingValueType>(0) //MemoRating
 
-    const [status, setStatus] = useState<StatusOnOff>('reset') //OnOff
+    const [status, setStatus] = useState<StatusOnOff>('reset') //MemoOnOff
 
-    const [itemValue, setItemValue] = useState<number>(1) //Select
-
-    function clickBodyItem(title: string) {
-        alert(`${title} here`)
-    } //Accordion
-
-    function changeItem(itemID: number) {
-        setItemValue(itemID)
-    } //Select
-
-    const items:Items = [
-        {id: 1, title: 'HTML'},
-        {id: 2, title: 'CSS'},
-        {id: 3, title: 'JS'},
-        {id: 4, title: 'React'},
-    ]
+    const [itemValue, setItemValue] = useState<number>(1) //MemoSelect
 
     return (
         <div className="App">
-            <Accordion title={"Disciplines"} items={items} deploy={deploy} changeDeploy={setDeploy} clickBodyItem={clickBodyItem}/>
-            <UncontrolledAccordion title={"Menu"}/>
+            <MemoAccordion title={"Disciplines"} deploy={deploy} changeDeploy={setDeploy}/>
+            <MemoUncontrolledAccordion title={"Menu"}/>
 
-            <Rating ratingValue={ratingValue} changeRatingValue={setRatingValue}/>
-            <UncontrolledRating/>
+            <MemoRating ratingValue={ratingValue} changeRatingValue={setRatingValue}/>
+            <MemoUncontrolledRating/>
 
-            <OnOff status={status} changeStatus={setStatus}/>
-            <UncontrolledOnOff/>
+            <MemoOnOff status={status} changeStatus={setStatus}/>
+            <MemoUncontrolledOnOff/>
 
-            <Select itemValue={itemValue} items={items} changeItem={changeItem}/>
+            <MemoSelect itemValue={itemValue} changeItemValue={setItemValue}/>
         </div>
     );
 }

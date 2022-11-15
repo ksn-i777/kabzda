@@ -1,14 +1,25 @@
 import React, {useState, KeyboardEvent, useEffect} from 'react';
-import {Item} from '../../App';
 import s from './Select.module.css'
 
 type SelectPropsType = {
     itemValue: number,
-    items: Array<Item>,
-    changeItem: (itemID: number) => void
+    changeItemValue: (itemID: number) => void
 }
+type Item = {
+    id: number,
+    title: string
+}
+type Items = Array<Item>
 
-export function Select(props: SelectPropsType) {
+function Select(props: SelectPropsType) {
+    console.log('select')
+
+    const items:Items = [
+        {id: 1, title: 'HTML'},
+        {id: 2, title: 'CSS'},
+        {id: 3, title: 'JS'},
+        {id: 4, title: 'React'},
+    ]
 
     const [mode, setMode] = useState(false)
     const [hoverItem, setHoverItem] = useState(props.itemValue)
@@ -21,7 +32,7 @@ export function Select(props: SelectPropsType) {
         setMode(!mode)
     }
     function onChangeItem(itemID: number) {
-        props.changeItem(itemID)
+        props.changeItemValue(itemID)
         setMode(!mode)
     }
     function onChooseItemMouse(itemID: number) {
@@ -29,13 +40,13 @@ export function Select(props: SelectPropsType) {
     }
     function onChooseItemArrow(e: KeyboardEvent<HTMLDivElement>) {
         if(e.code === 'ArrowUp' && hoverItem > 1) {
-            props.changeItem(hoverItem-1)
+            props.changeItemValue(hoverItem-1)
         }
-        if(e.code === 'ArrowDown' && hoverItem < props.items.length) {
-            props.changeItem(hoverItem+1)
+        if(e.code === 'ArrowDown' && hoverItem < items.length) {
+            props.changeItemValue(hoverItem+1)
         }
         if(e.code === 'Enter') {
-            props.changeItem(hoverItem)
+            props.changeItemValue(hoverItem)
             setMode(!mode)
         }
         if(e.code === 'Escape') {
@@ -45,9 +56,9 @@ export function Select(props: SelectPropsType) {
 
     return (
         <div className={s.wrapper} tabIndex={3} onKeyDown={onChooseItemArrow}>
-            <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>{props.items.map(i => i.id === props.itemValue ? i.title : '')}</div>
+            <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>{items.map(i => i.id === props.itemValue ? i.title : '')}</div>
             <div className={s.ul} onClick={onChangeMode}>
-                {mode && props.items.map(i =>
+                {mode && items.map(i =>
                 <div
                     key={i.id}
                     onMouseEnter={() => onChooseItemMouse(i.id)}
@@ -58,3 +69,5 @@ export function Select(props: SelectPropsType) {
         </div>
     )
 }
+
+export const MemoSelect = React.memo(Select)

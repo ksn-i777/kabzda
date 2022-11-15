@@ -7,7 +7,9 @@ type RatingPropsType = {
     changeRatingValue: (value: RatingValueType) => void,
 }
 
-export function Rating(props: RatingPropsType) {
+function Rating(props: RatingPropsType) {
+    console.log('rat')
+
     return (
         <div>
             <Star selected={props.ratingValue > 0} changeRatingValue={() => props.changeRatingValue(1)}/>
@@ -23,4 +25,6 @@ export function Rating(props: RatingPropsType) {
         </div>
     )
 }
+
+export const MemoRating = React.memo(Rating)
 

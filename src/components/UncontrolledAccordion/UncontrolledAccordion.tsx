@@ -6,7 +6,8 @@ type UncontrolledAccordionPropsType = {
     title: string,
 }
 
-export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
+function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
+    console.log('UNCacc')
 
     let [deploy, setDeploy] = useState(true)
     
@@ -22,3 +23,4 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
     )
 }
 
+export const MemoUncontrolledAccordion = React.memo(UncontrolledAccordion)

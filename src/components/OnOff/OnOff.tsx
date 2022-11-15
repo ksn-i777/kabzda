@@ -8,7 +8,8 @@ type OnOffPropsType = {
     changeStatus: (value: StatusOnOff) => void,
 }
 
-export function OnOff(props: OnOffPropsType) {
+function OnOff(props: OnOffPropsType) {
+    console.log('onoff')
 
     return (
         <div className={s.block}>
@@ -34,3 +35,5 @@ export function OnOff(props: OnOffPropsType) {
         </div>
     )
 }
+
+export const MemoOnOff = React.memo(OnOff)

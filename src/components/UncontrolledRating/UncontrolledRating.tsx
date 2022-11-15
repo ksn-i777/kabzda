@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {UncontrolledStar} from './UncontrolledStar';
 
-export function UncontrolledRating() {
+function UncontrolledRating() {
+    console.log('UNCrat')
 
     type RatingType = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -18,3 +19,4 @@ export function UncontrolledRating() {
     )
 }
 
+export const MemoUncontrolledRating = React.memo(UncontrolledRating)
