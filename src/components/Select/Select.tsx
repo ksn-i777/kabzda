@@ -1,52 +1,39 @@
-import React, {useState, KeyboardEvent, useEffect} from 'react';
+import React, {useState, KeyboardEvent} from 'react';
 import s from './Select.module.css'
+import {City} from '../../App'
 
 type SelectPropsType = {
-    itemValue: number,
-    changeItemValue: (itemID: number) => void
+    idCity: number,
+    setIdCity: (itemID: number) => void
+    cities: Array<City>
+    selectNumber: number
 }
-type Item = {
-    id: number,
-    title: string
-}
-type Items = Array<Item>
 
 function Select(props: SelectPropsType) {
-    console.log('select')
-
-    const items:Items = [
-        {id: 1, title: 'HTML'},
-        {id: 2, title: 'CSS'},
-        {id: 3, title: 'JS'},
-        {id: 4, title: 'React'},
-    ]
+    console.log('Select №' + props.selectNumber)
 
     const [mode, setMode] = useState(false)
-    const [hoverItem, setHoverItem] = useState(props.itemValue)
-
-    useEffect(() => {
-        setHoverItem(props.itemValue)
-    }, [props.itemValue])
+    const [hoverItem, setHoverItem] = useState(props.idCity)
 
     function onChangeMode() {
         setMode(!mode)
     }
     function onChangeItem(itemID: number) {
-        props.changeItemValue(itemID)
+        props.setIdCity(itemID)
         setMode(!mode)
     }
     function onChooseItemMouse(itemID: number) {
         setHoverItem(itemID)
     }
     function onChooseItemArrow(e: KeyboardEvent<HTMLDivElement>) {
-        if(e.code === 'ArrowUp' && hoverItem > 1) {
-            props.changeItemValue(hoverItem-1)
+        if(e.code === 'ArrowUp' && hoverItem && hoverItem > 1) {
+            props.setIdCity(hoverItem-1)
         }
-        if(e.code === 'ArrowDown' && hoverItem < items.length) {
-            props.changeItemValue(hoverItem+1)
+        if(e.code === 'ArrowDown' && hoverItem && hoverItem < props.cities.length) {
+            props.setIdCity(hoverItem+1)
         }
-        if(e.code === 'Enter') {
-            props.changeItemValue(hoverItem)
+        if(e.code === 'Enter' && hoverItem) {
+            props.setIdCity(hoverItem)
             setMode(!mode)
         }
         if(e.code === 'Escape') {
@@ -56,15 +43,17 @@ function Select(props: SelectPropsType) {
 
     return (
         <div className={s.wrapper} tabIndex={3} onKeyDown={onChooseItemArrow}>
-            <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>{items.map(i => i.id === props.itemValue ? i.title : '')}</div>
+            {props.idCity === 0 && <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>Choose city</div>}
+            <div className={mode ? s.firstGrey : s.first} onClick={onChangeMode}>{props.cities.map(i => i.id === props.idCity ? i.city : '')}</div>
             <div className={s.ul} onClick={onChangeMode}>
-                {mode && items.map(i =>
-                <div
-                    key={i.id}
-                    onMouseEnter={() => onChooseItemMouse(i.id)}
-                    className={hoverItem === i.id ? s.liHover : s.li}
-                    onClick={() => onChangeItem(i.id)}>{i.title}
-                </div>)}
+                {mode && props.cities.map(i =>
+                    <div
+                        key={i.id}
+                        onMouseEnter={() => onChooseItemMouse(i.id)}
+                        className={hoverItem === i.id ? s.liHover : s.li}
+                        onClick={() => onChangeItem(i.id)}>{i.city}
+                    </div>
+                )}
             </div>
         </div>
     )
