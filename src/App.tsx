@@ -7,6 +7,7 @@ import './App.css';
 //import {MemoOnOff} from './components/OnOff/OnOff';
 //import {MemoUncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
 import {MemoSelect} from './components/Select/Select';
+import {Clock} from './components/Clock/Clock';
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5; //MemoRating
 export type StatusOnOff = 'on' | 'off' | 'reset'; //MemoOnOff
@@ -21,7 +22,6 @@ type Cities = Array<City>
 
 
 function App() {
-    console.log('app')
 
     //const [deploy, setDeploy] = useState<boolean>(false) //MemoAccordion
     //const [ratingValue, setRatingValue] = useState<RatingValueType>(0) //MemoRating
@@ -53,18 +53,6 @@ function App() {
         return cities.filter(s => s.population < 5)
     }, [])*/
 
-    const [date, setDate] = useState(new Date())
-
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-
-    useEffect(() => {
-        setInterval(() => {
-            setDate(new Date())
-        }, 1000)
-    }, [])
-
     return (
         <div className="App">
             {/* <MemoAccordion title={"Disciplines"} deploy={deploy} changeDeploy={setDeploy}/>
@@ -80,7 +68,7 @@ function App() {
             <MemoSelect idCity={idCity2} setIdCity={setIdCity2} cities={citiesM} selectNumber={2}/>
             <MemoSelect idCity={idCity3} setIdCity={setIdCity3} cities={cities5} selectNumber={3}/>*/}
 
-            {hours+':'+minutes+':'+seconds}
+            <Clock/>
         </div>
     );
 }
