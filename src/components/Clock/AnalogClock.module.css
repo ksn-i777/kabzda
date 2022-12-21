@@ -1,0 +1,61 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.span {
+    position: absolute;
+    width: 300px;
+    height: 1px;
+    background-color: black;
+}
+
+.oneSeven {
+    transform: rotateZ(-60deg);
+}
+
+.twoEight {
+    transform: rotateZ(-30deg);
+}
+
+.threeNine {
+    transform: rotateZ(0deg);
+}
+
+.fourTen {
+    transform: rotateZ(30deg);
+}
+
+.fiveEleven {
+    transform: rotateZ(60deg);
+}
+
+.sixTwelve {
+    transform: rotateZ(90deg);
+}
+
+.miniWrapper {
+    z-index: 1;
+    width: 250px;
+    height: 250px;
+    background-color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    z-index: 3;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

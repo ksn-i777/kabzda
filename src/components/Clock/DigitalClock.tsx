@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-export function Clock() {
+export function DigitalClock() {
 
     const [date, setDate] = useState(new Date())
 
@@ -18,7 +18,7 @@ export function Clock() {
     }, [])
 
     return (
-        <div>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
             {addZero(date.getHours()) + ':' + addZero(date.getMinutes()) + ':' + addZero(date.getSeconds())}
         </div>
     );

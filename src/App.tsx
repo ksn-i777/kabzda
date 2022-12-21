@@ -6,8 +6,9 @@ import './App.css';
 //import {MemoUncontrolledRating} from './components/UncontrolledRating/UncontrolledRating'
 //import {MemoOnOff} from './components/OnOff/OnOff';
 //import {MemoUncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
-import {MemoSelect} from './components/Select/Select';
-import {Clock} from './components/Clock/Clock';
+//import {MemoSelect} from './components/Select/Select';
+import {DigitalClock} from './components/Clock/DigitalClock';
+import {AnalogClock} from './components/Clock/AnalogClock';
 
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5; //MemoRating
 export type StatusOnOff = 'on' | 'off' | 'reset'; //MemoOnOff
@@ -68,7 +69,8 @@ function App() {
             <MemoSelect idCity={idCity2} setIdCity={setIdCity2} cities={citiesM} selectNumber={2}/>
             <MemoSelect idCity={idCity3} setIdCity={setIdCity3} cities={cities5} selectNumber={3}/>*/}
 
-            <Clock/>
+            <DigitalClock/>
+            <AnalogClock/>
         </div>
     );
 }
